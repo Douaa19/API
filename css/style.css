@@ -58,7 +58,7 @@ form button:hover {
     color: #DAD8C3;
 }
 
-form p {
+form .root {
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
