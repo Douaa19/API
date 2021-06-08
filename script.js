@@ -13,10 +13,6 @@ var submit = document.getElementById("submit");
 submit.addEventListener("click", function (e) {
     e.preventDefault();
 
-    // if (document.getElementById("text").value === '') {
-            // app.innerHTML = '<span>Input is empty</span>' 
-    // }
-
     var inputValue = document.getElementById("text").value;
     
     var request = new XMLHttpRequest;
@@ -29,6 +25,7 @@ submit.addEventListener("click", function (e) {
 
         if (request.status >= 200 && request.status < 400) {
             data.forEach((repos) => {
+
                 // Create a div with a card class
                 const card = document.createElement('div')
                 card.setAttribute('class', 'card')
@@ -36,12 +33,13 @@ submit.addEventListener("click", function (e) {
 
                 // Create an image for avatar
                 const avatar = document.createElement('img')
-                avatar.src = `${repos.avatar_url}`
+                avatar.src = `${repos.owner.avatar_url}`
 
 
                 // Create an h1 and set the text content to the repo's name
                 const h1 = document.createElement('h1')
                 h1.textContent = repos.name
+
 
                 // Create a p and set the text content to the repo's description
                 const p = document.createElement('p')
@@ -52,15 +50,18 @@ submit.addEventListener("click", function (e) {
                 // Create a span and set the text content to the repo's star
                 const stars = document.createElement('span')
                 stars.textContent = `${repos.stargazers_count}`
+                stars.setAttribute('class', 'span1')
+
 
                 //Create a span and set the text content to the repo's issue
                 const issues = document.createElement('span')
                 issues.textContent = `${repos.open_issues_count}`
-
+                issues.setAttribute('class', 'span2')
 
 
                 // Append the cards to the container element
                 container.appendChild(card)
+
 
                 // Each card will contain avatar
                 card.appendChild(avatar)
@@ -70,41 +71,37 @@ submit.addEventListener("click", function (e) {
                 const content = document.createElement('div')
                 content.setAttribute('class', 'content')
 
+
                 // 
                 card.appendChild(content)
 
+                
                 // Creat new div
                 const ele1 = document.createElement('div')
                 ele1.setAttribute('class', 'ele1')
 
+
                 // 
                 content.appendChild(ele1)
+
 
                 // 
                 ele1.appendChild(h1)
                 ele1.appendChild(p)
 
+
                 // 
                 const ele2 = document.createElement('div')
                 ele2.setAttribute('class', 'ele2')
 
+
                 // 
                 content.appendChild(ele2)
 
-                // 
-                // const nums = document.createElement('div')
-                // nums.setAttribute('class', 'nums')
 
                 // 
                 ele2.appendChild(stars)
                 ele2.appendChild(issues)
-
-
-                // Each content will contain h1, p, number of stars ans number of issues
-                
-
-            
-                
 
             })
         }else {
