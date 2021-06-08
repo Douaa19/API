@@ -1,6 +1,5 @@
 
 const app = document.getElementById('root');
-
 const container = document.createElement('div');
 container.setAttribute('class', 'container');
 
@@ -9,11 +8,14 @@ app.appendChild(container)
 
 
 var input = document.getElementById("text");
-var inputValue = document.getElementById("text").value;
 var submit = document.getElementById("submit");
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
+
+    // if (document.getElementById("text").value === '') {
+            // app.innerHTML = '<span>Input is empty</span>' 
+    // }
 
     var inputValue = document.getElementById("text").value;
     
@@ -31,28 +33,83 @@ submit.addEventListener("click", function (e) {
                 const card = document.createElement('div')
                 card.setAttribute('class', 'card')
 
+
+                // Create an image for avatar
+                const avatar = document.createElement('img')
+                avatar.src = `${repos.avatar_url}`
+
+
                 // Create an h1 and set the text content to the repo's name
                 const h1 = document.createElement('h1')
                 h1.textContent = repos.name
 
-                // Create ap and set the text content to the repo's description
-                // const p = document.createElement('p')
-                // repos.description = repos.description//Limit to 300 chars
-                // p.textContent = `${repos.description}...`//End with an ellipses
+                // Create a p and set the text content to the repo's description
+                const p = document.createElement('p')
+                repos.description = repos.description//Limit to 300 chars
+                p.textContent = `${repos.description}...`//End with an ellipses
+
+
+                // Create a span and set the text content to the repo's star
+                const stars = document.createElement('span')
+                stars.textContent = `${repos.stargazers_count}`
+
+                //Create a span and set the text content to the repo's issue
+                const issues = document.createElement('span')
+                issues.textContent = `${repos.open_issues_count}`
+
 
 
                 // Append the cards to the container element
                 container.appendChild(card)
 
+                // Each card will contain avatar
+                card.appendChild(avatar)
 
-                // Each card will contain an h1 and p
-                card.appendChild(h1)
-                // card.appendChild(p)
+
+                // Apped the content to the card
+                const content = document.createElement('div')
+                content.setAttribute('class', 'content')
+
+                // 
+                card.appendChild(content)
+
+                // Creat new div
+                const ele1 = document.createElement('div')
+                ele1.setAttribute('class', 'ele1')
+
+                // 
+                content.appendChild(ele1)
+
+                // 
+                ele1.appendChild(h1)
+                ele1.appendChild(p)
+
+                // 
+                const ele2 = document.createElement('div')
+                ele2.setAttribute('class', 'ele2')
+
+                // 
+                content.appendChild(ele2)
+
+                // 
+                // const nums = document.createElement('div')
+                // nums.setAttribute('class', 'nums')
+
+                // 
+                ele2.appendChild(stars)
+                ele2.appendChild(issues)
+
+
+                // Each content will contain h1, p, number of stars ans number of issues
+                
+
+            
+                
 
             })
         }else {
             const errorMessage = document.createElement('message')
-            errorMessage.textContent = `Gah, it's not working!`
+            errorMessage.textContent = `Not working`
             app.appendChild(errorMessage)
         }
 
