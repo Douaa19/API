@@ -32,8 +32,8 @@ submit.addEventListener("click", function (e) {
 
 
                 // Create an image for avatar
-                const avatar = document.createElement('img')
-                avatar.src = `${repos.owner.avatar_url}`
+                // const avatar = document.createElement('img')
+                // avatar.src = `${repos.owner.avatar_url}`
 
 
                 // Create an h1 and set the text content to the repo's name
@@ -49,13 +49,13 @@ submit.addEventListener("click", function (e) {
 
                 // Create a span and set the text content to the repo's star
                 const stars = document.createElement('span')
-                stars.textContent = `${repos.stargazers_count}`
+                stars.textContent = `Stars: ${repos.stargazers_count}`
                 stars.setAttribute('class', 'span1')
 
 
                 //Create a span and set the text content to the repo's issue
                 const issues = document.createElement('span')
-                issues.textContent = `${repos.open_issues_count}`
+                issues.textContent = `Issues: ${repos.open_issues_count}`
                 issues.setAttribute('class', 'span2')
 
 
@@ -64,7 +64,7 @@ submit.addEventListener("click", function (e) {
 
 
                 // Each card will contain avatar
-                card.appendChild(avatar)
+                // card.appendChild(avatar)
 
 
                 // Apped the content to the card

@@ -70,7 +70,7 @@ form button:hover {
 
 .root .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem 1rem;
 }
 
@@ -87,17 +87,17 @@ form button:hover {
     align-items: center;
 }
 
-.root .container .card img {
+/* .root .container .card img {
     height: 5rem;
     width: 5rem;
-}
+} */
 
 .root .container .card .content {
     display: flex;
     width: 90%;
     margin: 0 5px;
-    align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .root .container .card .content .ele1 {
@@ -107,17 +107,23 @@ form button:hover {
 .root .container .card .content .ele2 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .root .container .card .content .ele2 span {
+    background-color: antiquewhite;
+    color: #8C153E;
+    border-radius: 3px;
+    text-align: center;
     font-size: bold;
     margin: 0.5rem 0 0 0;
+    padding: 1px 3px;
 }
 
-.root .container .card .content .ele2 .span1::before {
+/* .root .container .card .content .ele2 .span1::before {
     content: "Stars: ";
 }
 
 .root .container .card .content .ele2 .span2::before {
     content: "Issues: ";
-}
+} */
