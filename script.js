@@ -4,7 +4,12 @@ const container = document.createElement('div');
 container.setAttribute('class', 'container');
 
 
-app.appendChild(container)
+app.appendChild(container);
+
+const user = document.createElement('div');
+user.setAttribute('class', 'user');
+
+container.appendChild(user);
 
 
 var input = document.getElementById("text");
@@ -15,30 +20,49 @@ submit.addEventListener("click", function (e) {
 
     var inputValue = document.getElementById("text").value;
     
-    var request = new XMLHttpRequest;
+    var request = new XMLHttpRequest();
     var url = `https://api.github.com/users/${inputValue}/repos`;
 
     request.open('GET', url, true);
 
     request.onload = function () {
-        var data = JSON.parse(this.response)
+        var data = JSON.parse(this.response);
+       
+        console.log(data);
+        // Create an image for avatar
+        const img = document.createElement('img');
+        img.src = `${data[0].owner.avatar_url}`
+        console.log(data)
+
+        //
+        const cardUser = document.createElement('div');
+        cardUser.setAttribute('class', 'cardUser');
+
+        // 
+        container.appendChild(cardUser);
+
+        // 
+        cardUser.appendChild(img);
+
+        const userName = document.createElement('span');
+        userName.textContent = `${data[0].owner.login}`;
+
+        cardUser.appendChild(userName);
+        
 
         if (request.status >= 200 && request.status < 400) {
             data.forEach((repos) => {
 
                 // Create a div with a card class
                 const card = document.createElement('div')
-                card.setAttribute('class', 'card')
+                card.setAttribute('class', 'card');
 
-
-                // Create an image for avatar
-                // const avatar = document.createElement('img')
-                // avatar.src = `${repos.owner.avatar_url}`
-
+                // 
+                user.appendChild(card);
 
                 // Create an h1 and set the text content to the repo's name
                 const h1 = document.createElement('h1')
-                h1.textContent = repos.name
+                h1.textContent = `${repos.name}`
 
 
                 // Create a p and set the text content to the repo's description
@@ -60,11 +84,8 @@ submit.addEventListener("click", function (e) {
 
 
                 // Append the cards to the container element
-                container.appendChild(card)
+                user.appendChild(card)
 
-
-                // Each card will contain avatar
-                // card.appendChild(avatar)
 
 
                 // Apped the content to the card
@@ -81,7 +102,7 @@ submit.addEventListener("click", function (e) {
                 ele1.setAttribute('class', 'ele1')
 
 
-                // 
+                // content div have a child 'ele1'
                 content.appendChild(ele1)
 
 
@@ -95,7 +116,7 @@ submit.addEventListener("click", function (e) {
                 ele2.setAttribute('class', 'ele2')
 
 
-                // 
+                // Content have one more child 'ele2'
                 content.appendChild(ele2)
 
 

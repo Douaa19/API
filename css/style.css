@@ -68,13 +68,39 @@ form button:hover {
     padding: 0.5rem 0 0.5rem 0;
 }
 
-.root .container {
+.root .container .user {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px 11px;
 }
 
-.root .container .card {
+.root .container .cardUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.root .container .cardUser img {
+    width: 200px;
+    height: 200px;
+}
+
+.root .container .cardUser span {
+    font-size: 32px;
+    text-decoration: underline;
+}
+
+.root .container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.root .container .user {
+    margin-top: 3rem;
+}
+
+.root .container .user .card {
     display: flex;
     width: 100%;
     background-color: #8C153E;
@@ -107,7 +133,7 @@ form button:hover {
 .root .container .card .content .ele2 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .root .container .card .content .ele2 span {
